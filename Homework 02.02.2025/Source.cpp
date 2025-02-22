@@ -6,6 +6,10 @@
 Навчальний матеріал за посиланням http://surl.li/umeci
 */
 
+
+
+
+
 /*
 №1
 	Ввести в комп'ютер таку інформацію про монітори: найменування, термін гарантії, ціну.
@@ -99,142 +103,142 @@ int main()
 {
 	system("chcp 1251>null");
 	srand(time(0));
-//
-//#pragma region Exercise 1
-//
-//	exercise(1);
-//
-//	listOfComputers myList;
-//
-//	myList.dataBase.push_back({ "ASUS ROG Strix", "2 years", 1500.99 });
-//	myList.dataBase.push_back({ "Dell XPS 15", "1 year", 1899.50 });
-//	myList.dataBase.push_back({ "MacBook Pro", "3 years", 2499.00 });
-//
-//
-//	cout << "\033[042mПоточна база даних про комп'ютери: \033[0m";
-//	cout << endl;
-//	outputDataBase(myList);
-//
-//	string pcName;
-//	string guarantee;
-//	double price;
-//
-//	string realPcName;
-//
-//	while (true)
-//	{
-//		cout << endl;
-//		cout << "\033[033mВведіть найменування комп`ютера(англійською): \033[0m";
-//		getline(cin, pcName);
-//		cout << endl;
-//		realPcName = pcName;
-//		if (!detectLanguage(pcName))
-//		{
-//			cout << "\033[031mБудь ласка, введіть назву англійською мовою!\033[0m";
-//			cout << endl;
-//			continue;
-//		}
-//
-//		cout << endl << "\033[042m Ваші дані успішно додані! \033[0m"  << endl;
-//		break;
-//	}
-//
-//
-//	while (true) {
-//		cout << endl;
-//		cout << "\033[033mВведіть гарантію комп`ютера: \033[0m";
-//		getline(cin, guarantee);
-//		cout << endl;
-//
-//		if (guarantee.empty())
-//		{
-//			cout << "\033[031m Помилка! Схоже Ви нічого не ввели.\033[0m\n";
-//			continue;
-//		}
-//
-//		if (cin.fail()) {
-//			cout << "\033[031m Помилка! Будь ласка, введіть корректний термінт гарантії.\033[0m\n";
-//			cin.clear(); 
-//			cin.ignore(1000, '\n'); 
-//			continue;
-//		}
-//
-//		cout << endl << "\033[042m Ваші дані успішно додані! \033[0m" << endl;
-//		break;	
-//	}
-//
-//	while (true) {
-//		cout << endl;
-//		cout << "\033[033mВведіть ціну комп`ютера: \033[0m";
-//		cin >> price;
-//		cout << endl;
-//
-//		if (cin.fail()) {
-//			cout << "\033[031m Помилка! Будь ласка, введіть ціну числом.\033[0m\n";
-//			cin.clear();
-//			cin.ignore(1000, '\n');
-//			continue;
-//		}
-//
-//		if (price < 0)
-//		{
-//			cout << "\033[031m Помилка! Ціна комп'ютера не може бути від'ємним числом.\033[0m\n";
-//			continue;
-//		}
-//
-//		cout << endl << "\033[042m Ваші дані успішно додані! \033[0m" << endl;
-//		break;
-//	}
-//
-//	myList.dataBase.push_back({ realPcName, guarantee, price });
-//
-//	cout << "\033[042mПоточна база даних про комп'ютери: \033[0m";
-//	cout << endl;
-//	outputDataBase(myList);
-//
-//
-//
-//#pragma endregion	
-//
-//
-///*
-//№2
-//	Авторинок: Марка, Модель, Рік випуску, Ціна, Торг, Дані авто (двигун/колір/кількість власників).
-//	Вимоги: Використовувати вкладені структури, масив (так як авто може бути декілька) та прототипи функцій.
-//	Вивести інформацію про автомобілі у вигляді таблиці
-//
-//*/
-//
-//#pragma region Exercise 2
-//
-//	exercise(2);
-//
-//	const int carCount = 3;
-//	Car cars[carCount];  
-//
-//	cin.ignore();
-//
-//	for (int i = 0; i < carCount; i++) {
-//		cout << "\033[042mВведіть дані для автомобіля #" << i + 1 << ":\033[0m\n" << endl;
-//		inputCarData(cars[i]);
-//		cout << endl;
-//	}
-//
-//	cout << left << setw(20) << "\033[45m Марка"
-//		<< setw(20) << "Модель"
-//		<< setw(10) << "Рік"
-//		<< setw(15) << "Ціна"
-//		<< setw(10) << "Торг"
-//		<< setw(15) << "Двигун"
-//		<< setw(15) << "Колір"
-//		<< setw(20) << "Кількість власників \033[0m" << endl;
-//
-//	for (int i = 0; i < carCount; i++) {
-//		printCarData(cars[i]);
-//	}
-//
-//#pragma endregion
-//
+
+#pragma region Exercise 1
+
+	exercise(1);
+
+	listOfComputers myList;
+
+	myList.dataBase.push_back({ "ASUS ROG Strix", "2 years", 1500.99 });
+	myList.dataBase.push_back({ "Dell XPS 15", "1 year", 1899.50 });
+	myList.dataBase.push_back({ "MacBook Pro", "3 years", 2499.00 });
+
+
+	cout << "\033[042mПоточна база даних про комп'ютери: \033[0m";
+	cout << endl;
+	outputDataBase(myList);
+
+	string pcName;
+	string guarantee;
+	double price;
+
+	string realPcName;
+
+	while (true)
+	{
+		cout << endl;
+		cout << "\033[033mВведіть найменування комп`ютера(англійською): \033[0m";
+		getline(cin, pcName);
+		cout << endl;
+		realPcName = pcName;
+		if (!detectLanguage(pcName))
+		{
+			cout << "\033[031mБудь ласка, введіть назву англійською мовою!\033[0m";
+			cout << endl;
+			continue;
+		}
+
+		cout << endl << "\033[042m Ваші дані успішно додані! \033[0m"  << endl;
+		break;
+	}
+
+
+	while (true) {
+		cout << endl;
+		cout << "\033[033mВведіть гарантію комп`ютера: \033[0m";
+		getline(cin, guarantee);
+		cout << endl;
+
+		if (guarantee.empty())
+		{
+			cout << "\033[031m Помилка! Схоже Ви нічого не ввели.\033[0m\n";
+			continue;
+		}
+
+		if (cin.fail()) {
+			cout << "\033[031m Помилка! Будь ласка, введіть корректний термінт гарантії.\033[0m\n";
+			cin.clear(); 
+			cin.ignore(1000, '\n'); 
+			continue;
+		}
+
+		cout << endl << "\033[042m Ваші дані успішно додані! \033[0m" << endl;
+		break;	
+	}
+
+	while (true) {
+		cout << endl;
+		cout << "\033[033mВведіть ціну комп`ютера: \033[0m";
+		cin >> price;
+		cout << endl;
+
+		if (cin.fail()) {
+			cout << "\033[031m Помилка! Будь ласка, введіть ціну числом.\033[0m\n";
+			cin.clear();
+			cin.ignore(1000, '\n');
+			continue;
+		}
+
+		if (price < 0)
+		{
+			cout << "\033[031m Помилка! Ціна комп'ютера не може бути від'ємним числом.\033[0m\n";
+			continue;
+		}
+
+		cout << endl << "\033[042m Ваші дані успішно додані! \033[0m" << endl;
+		break;
+	}
+
+	myList.dataBase.push_back({ realPcName, guarantee, price });
+
+	cout << "\033[042mПоточна база даних про комп'ютери: \033[0m";
+	cout << endl;
+	outputDataBase(myList);
+
+
+
+#pragma endregion	
+
+
+/*
+№2
+	Авторинок: Марка, Модель, Рік випуску, Ціна, Торг, Дані авто (двигун/колір/кількість власників).
+	Вимоги: Використовувати вкладені структури, масив (так як авто може бути декілька) та прототипи функцій.
+	Вивести інформацію про автомобілі у вигляді таблиці
+
+*/
+
+#pragma region Exercise 2
+
+	exercise(2);
+
+	const int carCount = 3;
+	Car cars[carCount];  
+
+	cin.ignore();
+
+	for (int i = 0; i < carCount; i++) {
+		cout << "\033[042mВведіть дані для автомобіля #" << i + 1 << ":\033[0m\n" << endl;
+		inputCarData(cars[i]);
+		cout << endl;
+	}
+
+	cout << left << setw(20) << "\033[45m Марка"
+		<< setw(20) << "Модель"
+		<< setw(10) << "Рік"
+		<< setw(15) << "Ціна"
+		<< setw(10) << "Торг"
+		<< setw(15) << "Двигун"
+		<< setw(15) << "Колір"
+		<< setw(20) << "Кількість власників \033[0m" << endl;
+
+	for (int i = 0; i < carCount; i++) {
+		printCarData(cars[i]);
+	}
+
+#pragma endregion
+
 
 
 
