@@ -22,9 +22,11 @@
 #include <vector>
 #include <algorithm>  
 #include <cctype>
+#include <iomanip>
 
 using namespace std;
 
+// EXERCISE 1
 typedef struct
 {
 	string name;
@@ -38,17 +40,52 @@ typedef struct
 } listOfComputers;
 
 
+
+// EXERCISE 2
+struct CarDetails {
+	string engine;    
+	string color;      
+	int ownersCount; 
+};
+
+
+struct Car {
+	string brand;      
+	string model;     
+	int year;         
+	double price;      
+	bool isNegotiable; 
+	CarDetails details; 
+};
+
+
+
+#pragma region Functions Prototypes 
+
+// EXERCISE 1
 void exercise(int numberOfExercise);
 
 void outputDataBase(const listOfComputers& myList);
 
-void to_lower(string& text) {
-	transform(text.begin(), text.end(), text.begin(), [](unsigned char c) {
-		return tolower(c);
-		});
-}
+void to_lower(string& text);
 
-bool detectLanguage(string& text); 
+bool detectLanguage(string& text);
+
+
+
+
+// EXERCISE 2
+
+void inputCarData(Car& car);
+
+void printCarData(const Car& car);
+
+
+
+// EXERCISE 3
+
+
+#pragma endregion
 
 int main()
 {
@@ -160,9 +197,33 @@ int main()
 
 */
 
-#pragma region Exercise 1
+#pragma region Exercise 2
 
 	exercise(2);
+
+	const int carCount = 3;
+	Car cars[carCount];  
+
+	cin.ignore();
+
+	for (int i = 0; i < carCount; i++) {
+		cout << "\033[042mВведіть дані для автомобіля #" << i + 1 << ":\033[0m\n" << endl;
+		inputCarData(cars[i]);
+		cout << endl;
+	}
+
+	cout << left << setw(20) << "\033[45m Марка"
+		<< setw(20) << "Модель"
+		<< setw(10) << "Рік"
+		<< setw(15) << "Ціна"
+		<< setw(10) << "Торг"
+		<< setw(15) << "Двигун"
+		<< setw(15) << "Колір"
+		<< setw(20) << "Кількість власників \033[0m" << endl;
+
+	for (int i = 0; i < carCount; i++) {
+		printCarData(cars[i]);
+	}
 
 #pragma endregion
 
@@ -196,6 +257,12 @@ void outputDataBase(const listOfComputers& myList) {
 	}
 	cout << endl;
 
+}
+
+void to_lower(string& text) {
+	transform(text.begin(), text.end(), text.begin(), [](unsigned char c) {
+		return tolower(c);
+		});
 }
 
 bool detectLanguage(string& text) {
@@ -237,4 +304,39 @@ bool detectLanguage(string& text) {
 
 
 	return false;
+}
+
+void inputCarData(Car& car) {
+	cout << "Марка: ";
+	getline(cin, car.brand);
+	cout << "Модель: ";
+	getline(cin, car.model);
+	cout << "Рік випуску: ";
+	cin >> car.year;
+	cout << "Ціна: ";
+	cin >> car.price;
+	cout << "Чи є торг? (1 - так, 0 - ні): ";
+	cin >> car.isNegotiable;
+	cin.ignore(); 
+
+	cout << endl << "\033[042mДеталі авто:\033[0m\n" << endl;
+	cout << "Тип двигуна: ";
+	getline(cin, car.details.engine);
+	cout << "Колір: ";
+	getline(cin, car.details.color);
+	cout << "Кількість власників: ";
+	cin >> car.details.ownersCount;
+	cin.ignore(); 
+}
+
+
+void printCarData(const Car& car) {
+	cout << left << setw(20) << car.brand
+		<< setw(20) << car.model
+		<< setw(10) << car.year
+		<< setw(15) << fixed << setprecision(2) << car.price
+		<< setw(10) << (car.isNegotiable ? "Так" : "Ні")
+		<< setw(15) << car.details.engine
+		<< setw(15) << car.details.color
+		<< setw(20) << car.details.ownersCount << endl;
 }
