@@ -3,12 +3,6 @@
 ===================
 
 
-№3
-	Обробити інформацію про групу студентів, що містить прізвища, стать та середній бал успішності.
-	Вивести повідомлення, чий підсумковий середній бал вище – юнаків чи дівчат.
-	У структурі використовувати ключове слово typedef.
-
-
 Навчальний матеріал за посиланням http://surl.li/umeci
 */
 
@@ -27,6 +21,7 @@
 using namespace std;
 
 // EXERCISE 1
+
 typedef struct
 {
 	string name;
@@ -42,6 +37,7 @@ typedef struct
 
 
 // EXERCISE 2
+
 struct CarDetails {
 	string engine;    
 	string color;      
@@ -57,6 +53,15 @@ struct Car {
 	bool isNegotiable; 
 	CarDetails details; 
 };
+
+
+// EXERCISE 3
+
+typedef struct {
+	string lastName;  
+	char gender;      // Стать ('M' - юнак, 'F' - дівчина)
+	double avgGrade;  
+} Student;
 
 
 
@@ -84,6 +89,9 @@ void printCarData(const Car& car);
 
 // EXERCISE 3
 
+void inputStudentData(Student& student);
+
+void calculateAndCompareAverageGrades(Student students[], int n);
 
 #pragma endregion
 
@@ -91,142 +99,169 @@ int main()
 {
 	system("chcp 1251>null");
 	srand(time(0));
+//
+//#pragma region Exercise 1
+//
+//	exercise(1);
+//
+//	listOfComputers myList;
+//
+//	myList.dataBase.push_back({ "ASUS ROG Strix", "2 years", 1500.99 });
+//	myList.dataBase.push_back({ "Dell XPS 15", "1 year", 1899.50 });
+//	myList.dataBase.push_back({ "MacBook Pro", "3 years", 2499.00 });
+//
+//
+//	cout << "\033[042mПоточна база даних про комп'ютери: \033[0m";
+//	cout << endl;
+//	outputDataBase(myList);
+//
+//	string pcName;
+//	string guarantee;
+//	double price;
+//
+//	string realPcName;
+//
+//	while (true)
+//	{
+//		cout << endl;
+//		cout << "\033[033mВведіть найменування комп`ютера(англійською): \033[0m";
+//		getline(cin, pcName);
+//		cout << endl;
+//		realPcName = pcName;
+//		if (!detectLanguage(pcName))
+//		{
+//			cout << "\033[031mБудь ласка, введіть назву англійською мовою!\033[0m";
+//			cout << endl;
+//			continue;
+//		}
+//
+//		cout << endl << "\033[042m Ваші дані успішно додані! \033[0m"  << endl;
+//		break;
+//	}
+//
+//
+//	while (true) {
+//		cout << endl;
+//		cout << "\033[033mВведіть гарантію комп`ютера: \033[0m";
+//		getline(cin, guarantee);
+//		cout << endl;
+//
+//		if (guarantee.empty())
+//		{
+//			cout << "\033[031m Помилка! Схоже Ви нічого не ввели.\033[0m\n";
+//			continue;
+//		}
+//
+//		if (cin.fail()) {
+//			cout << "\033[031m Помилка! Будь ласка, введіть корректний термінт гарантії.\033[0m\n";
+//			cin.clear(); 
+//			cin.ignore(1000, '\n'); 
+//			continue;
+//		}
+//
+//		cout << endl << "\033[042m Ваші дані успішно додані! \033[0m" << endl;
+//		break;	
+//	}
+//
+//	while (true) {
+//		cout << endl;
+//		cout << "\033[033mВведіть ціну комп`ютера: \033[0m";
+//		cin >> price;
+//		cout << endl;
+//
+//		if (cin.fail()) {
+//			cout << "\033[031m Помилка! Будь ласка, введіть ціну числом.\033[0m\n";
+//			cin.clear();
+//			cin.ignore(1000, '\n');
+//			continue;
+//		}
+//
+//		if (price < 0)
+//		{
+//			cout << "\033[031m Помилка! Ціна комп'ютера не може бути від'ємним числом.\033[0m\n";
+//			continue;
+//		}
+//
+//		cout << endl << "\033[042m Ваші дані успішно додані! \033[0m" << endl;
+//		break;
+//	}
+//
+//	myList.dataBase.push_back({ realPcName, guarantee, price });
+//
+//	cout << "\033[042mПоточна база даних про комп'ютери: \033[0m";
+//	cout << endl;
+//	outputDataBase(myList);
+//
+//
+//
+//#pragma endregion	
+//
+//
+///*
+//№2
+//	Авторинок: Марка, Модель, Рік випуску, Ціна, Торг, Дані авто (двигун/колір/кількість власників).
+//	Вимоги: Використовувати вкладені структури, масив (так як авто може бути декілька) та прототипи функцій.
+//	Вивести інформацію про автомобілі у вигляді таблиці
+//
+//*/
+//
+//#pragma region Exercise 2
+//
+//	exercise(2);
+//
+//	const int carCount = 3;
+//	Car cars[carCount];  
+//
+//	cin.ignore();
+//
+//	for (int i = 0; i < carCount; i++) {
+//		cout << "\033[042mВведіть дані для автомобіля #" << i + 1 << ":\033[0m\n" << endl;
+//		inputCarData(cars[i]);
+//		cout << endl;
+//	}
+//
+//	cout << left << setw(20) << "\033[45m Марка"
+//		<< setw(20) << "Модель"
+//		<< setw(10) << "Рік"
+//		<< setw(15) << "Ціна"
+//		<< setw(10) << "Торг"
+//		<< setw(15) << "Двигун"
+//		<< setw(15) << "Колір"
+//		<< setw(20) << "Кількість власників \033[0m" << endl;
+//
+//	for (int i = 0; i < carCount; i++) {
+//		printCarData(cars[i]);
+//	}
+//
+//#pragma endregion
+//
 
-#pragma region Exercise 1
-
-	exercise(1);
-
-	listOfComputers myList;
-
-	myList.dataBase.push_back({ "ASUS ROG Strix", "2 years", 1500.99 });
-	myList.dataBase.push_back({ "Dell XPS 15", "1 year", 1899.50 });
-	myList.dataBase.push_back({ "MacBook Pro", "3 years", 2499.00 });
-
-
-	cout << "\033[042mПоточна база даних про комп'ютери: \033[0m";
-	cout << endl;
-	outputDataBase(myList);
-
-	string pcName;
-	string guarantee;
-	double price;
-
-	string realPcName;
-
-	while (true)
-	{
-		cout << endl;
-		cout << "\033[033mВведіть найменування комп`ютера(англійською): \033[0m";
-		getline(cin, pcName);
-		cout << endl;
-		realPcName = pcName;
-		if (!detectLanguage(pcName))
-		{
-			cout << "\033[031mБудь ласка, введіть назву англійською мовою!\033[0m";
-			cout << endl;
-			continue;
-		}
-
-		cout << endl << "\033[042m Ваші дані успішно додані! \033[0m"  << endl;
-		break;
-	}
-
-
-	while (true) {
-		cout << endl;
-		cout << "\033[033mВведіть гарантію комп`ютера: \033[0m";
-		getline(cin, guarantee);
-		cout << endl;
-
-		if (guarantee.empty())
-		{
-			cout << "\033[031m Помилка! Схоже Ви нічого не ввели.\033[0m\n";
-			continue;
-		}
-
-		if (cin.fail()) {
-			cout << "\033[031m Помилка! Будь ласка, введіть корректний термінт гарантії.\033[0m\n";
-			cin.clear(); 
-			cin.ignore(1000, '\n'); 
-			continue;
-		}
-
-		cout << endl << "\033[042m Ваші дані успішно додані! \033[0m" << endl;
-		break;	
-	}
-
-	while (true) {
-		cout << endl;
-		cout << "\033[033mВведіть ціну комп`ютера: \033[0m";
-		cin >> price;
-		cout << endl;
-
-		if (cin.fail()) {
-			cout << "\033[031m Помилка! Будь ласка, введіть ціну числом.\033[0m\n";
-			cin.clear();
-			cin.ignore(1000, '\n');
-			continue;
-		}
-
-		if (price < 0)
-		{
-			cout << "\033[031m Помилка! Ціна комп'ютера не може бути від'ємним числом.\033[0m\n";
-			continue;
-		}
-
-		cout << endl << "\033[042m Ваші дані успішно додані! \033[0m" << endl;
-		break;
-	}
-
-	myList.dataBase.push_back({ realPcName, guarantee, price });
-
-	cout << "\033[042mПоточна база даних про комп'ютери: \033[0m";
-	cout << endl;
-	outputDataBase(myList);
-
-
-
-#pragma endregion	
 
 
 /*
-№2
-	Авторинок: Марка, Модель, Рік випуску, Ціна, Торг, Дані авто (двигун/колір/кількість власників).
-	Вимоги: Використовувати вкладені структури, масив (так як авто може бути декілька) та прототипи функцій.
-	Вивести інформацію про автомобілі у вигляді таблиці
-
+№3
+	Обробити інформацію про групу студентів, що містить прізвища, стать та середній бал успішності.
+	Вивести повідомлення, чий підсумковий середній бал вище – юнаків чи дівчат.
+	У структурі використовувати ключове слово typedef.
 */
 
-#pragma region Exercise 2
+#pragma region Exercise 3
 
-	exercise(2);
+	const int numStudents = 5;  
+	Student students[numStudents];  
 
-	const int carCount = 3;
-	Car cars[carCount];  
-
-	cin.ignore();
-
-	for (int i = 0; i < carCount; i++) {
-		cout << "\033[042mВведіть дані для автомобіля #" << i + 1 << ":\033[0m\n" << endl;
-		inputCarData(cars[i]);
+	
+	for (int i = 0; i < numStudents; i++) {
+		cout << "\033[042mВведіть дані для студента #" << i + 1 << ":\033[0m\n" << endl;
+		inputStudentData(students[i]);
 		cout << endl;
 	}
 
-	cout << left << setw(20) << "\033[45m Марка"
-		<< setw(20) << "Модель"
-		<< setw(10) << "Рік"
-		<< setw(15) << "Ціна"
-		<< setw(10) << "Торг"
-		<< setw(15) << "Двигун"
-		<< setw(15) << "Колір"
-		<< setw(20) << "Кількість власників \033[0m" << endl;
 
-	for (int i = 0; i < carCount; i++) {
-		printCarData(cars[i]);
-	}
+	calculateAndCompareAverageGrades(students, numStudents);
+
 
 #pragma endregion
-
 
 	return 0;
 }
@@ -239,7 +274,7 @@ int main()
 
 
 
-
+// EXERCISE 1
 
 void exercise(int numberOfExercise)
 {
@@ -306,6 +341,10 @@ bool detectLanguage(string& text) {
 	return false;
 }
 
+
+
+// EXERCISE 2
+
 void inputCarData(Car& car) {
 	cout << "Марка: ";
 	getline(cin, car.brand);
@@ -329,7 +368,6 @@ void inputCarData(Car& car) {
 	cin.ignore(); 
 }
 
-
 void printCarData(const Car& car) {
 	cout << left << setw(20) << car.brand
 		<< setw(20) << car.model
@@ -339,4 +377,56 @@ void printCarData(const Car& car) {
 		<< setw(15) << car.details.engine
 		<< setw(15) << car.details.color
 		<< setw(20) << car.details.ownersCount << endl;
+}
+
+
+
+// EXERCISE 3
+
+void inputStudentData(Student& student) {
+	cout << "Прізвище: ";
+	getline(cin, student.lastName);
+	cout << "Стать (M - юнак, F - дівчина): ";
+	cin >> student.gender;
+	cout << "Середній бал: ";
+	cin >> student.avgGrade;
+	cin.ignore();  
+}
+
+
+void calculateAndCompareAverageGrades(Student students[], int n) {
+	double sumM = 0, sumF = 0;
+	int countM = 0, countF = 0;
+
+
+	for (int i = 0; i < n; i++) {
+		if (students[i].gender == 'M' || students[i].gender == 'm') {
+			sumM += students[i].avgGrade;
+			countM++;
+		}
+		else if (students[i].gender == 'F' || students[i].gender == 'f') {
+			sumF += students[i].avgGrade;
+			countF++;
+		}
+	}
+
+	double avgM = (countM > 0) ? sumM / countM : 0;
+	double avgF = (countF > 0) ? sumF / countF : 0;
+	cout << fixed << setprecision(2);
+	cout << "\033[034mСередній бал юнаків: \033[0m" << avgM << endl;
+	cout << fixed << setprecision(2);
+	cout << "\033[031mСередній бал дівчат: \033[0m" << avgF << endl;
+
+	cout << endl;
+	cout << fixed << setprecision(2);
+
+	if (avgM > avgF) {
+		cout << "\033[035mЮнаки мають вищий середній бал: \033[0m" << avgM << endl;
+	}
+	else if (avgF > avgM) {
+		cout << "\033[035mДівчата мають вищий середній бал: \033[0m" << avgF << endl;
+	}
+	else {
+		cout << "\033[035mСередній бал юнаків та дівчат однаковий: \033[0m" << avgM << endl;
+	}
 }
